@@ -9,14 +9,15 @@ config=tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth=True
 session=tf.compat.v1.InteractiveSession(config=config)
 
+# MLP
+feature_vector_length = 784
+num_classes = 10
 
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
 X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
 X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
 
-num_classes = 10
-input_shape =(28, 28,1)
 
 X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
@@ -28,14 +29,11 @@ X_test /= 255
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
+input_shape =(feature_vector_length,)
 
 def init():
-    model  =Sequential()
-    model.add(Conv2D(28, kernel_size=(3, 3), input_shape = input_shape))
-    model.add(MaxPooling2D(pool_size=(2,2)))
-    model.add(Flatten())
-    model.add(Dense(128, activation='relu'))
-    model.add(Dropout(0.2))
+    model.add(Dense(350, input_shape=input_shape, activation='relu'))
+    model.add(Dense(50, activation='relu'))
     model.add(Dense(10, activation='softmax'))
 
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])

@@ -7,7 +7,7 @@ no_of_individuals = 10
 mutate_factor = 0.05
 individuals = []
 
-layers = [0, 3, 5]
+layers = [0, 1, 2]
 
 def mutate(new_individual):
 
