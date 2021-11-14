@@ -91,3 +91,7 @@ for generation in range(no_of_generations):
     print(losses)
 
     individuals = evolve(individuals, losses)
+    
+# Save all different cnn.h5(s)
+for i in range(no_of_individuals):
+    individuals[i].save("cnn"+ str(i) +".h5")
