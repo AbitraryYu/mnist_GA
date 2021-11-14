@@ -1,4 +1,5 @@
 import tensorflow as tf
+from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.layers import Dense, Conv2D, Dropout, Flatten, MaxPooling2D
@@ -14,6 +15,7 @@ session=tf.compat.v1.InteractiveSession(config=config)
 X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
 X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
 
+num_classes = 10
 input_shape =(28, 28,1)
 
 X_train = X_train.astype('float32')
@@ -21,6 +23,10 @@ X_test = X_test.astype('float32')
 
 X_train /= 255
 X_test /= 255
+
+# convert class vectors to binary class matrices
+y_train = keras.utils.to_categorical(y_train, num_classes)
+y_test = keras.utils.to_categorical(y_test, num_classes)
 
 
 def init():
