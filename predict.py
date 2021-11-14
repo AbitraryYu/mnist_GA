@@ -20,7 +20,7 @@ X_train /= 255
 
 model = load_model("cnn.h5")
 
-output = model.predict(X_train[0].reshape(1,feature_vector_length)
+output = model.predict(X_train[0].reshape(1,feature_vector_length))
 
 print("Model output :", output)
 print("Value with highest probability :", np.argmax(output[0]))

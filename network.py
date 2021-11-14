@@ -15,8 +15,8 @@ num_classes = 10
 
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
-X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
-X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
+X_train = X_train.reshape(X_train.shape[0], feature_vector_length)
+X_test = X_test.reshape(X_test.shape[0], feature_vector_length)
 
 
 X_train = X_train.astype('float32')
@@ -32,6 +32,7 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 input_shape =(feature_vector_length,)
 
 def init():
+    model  =Sequential()
     model.add(Dense(350, input_shape=input_shape, activation='relu'))
     model.add(Dense(50, activation='relu'))
     model.add(Dense(10, activation='softmax'))
