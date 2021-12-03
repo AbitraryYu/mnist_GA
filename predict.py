@@ -18,7 +18,7 @@ X_train = X_train.astype('float32')
 
 X_train /= 255
 
-model = load_model("cnn.h5")
+model = load_model("cnn0.h5")
 
 output = model.predict(X_train[0].reshape(1,feature_vector_length))
 
