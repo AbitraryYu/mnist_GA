@@ -2,8 +2,8 @@ import numpy as np
 from network import init,train
 import random
 
-no_of_generations = 5
-no_of_individuals = 5 
+no_of_generations = 3
+no_of_individuals = 3 
 mutate_factor = 0.05
 individuals = []
 
